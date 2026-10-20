@@ -1,0 +1,25 @@
+{
+  "name": "sheikah-slate-translator",
+  "version": "1.0.0",
+  "description": "Traducteur de texte en écriture Sheikah (The Legend of Zelda) avec export SVG vectoriel",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --check server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "zelda",
+    "sheikah",
+    "translator",
+    "svg",
+    "render",
+    "botw",
+    "totk"
+  ],
+  "author": "",
+  "license": "MIT"
+}

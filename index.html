@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traducteur Tablette Sheikah | The Legend of Zelda</title>
+  <meta name="description" content="Traduisez du texte en alphabet Sheikah de The Legend of Zelda (Breath of the Wild / Tears of the Kingdom) et exportez en format SVG vectoriel.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/sheikah-theme.css">
+</head>
+<body>
+
+  <!-- ====================================================================
+       SHEIKAH SLATE DEVICE CASING
+       ==================================================================== -->
+  <main class="sheikah-tablet" role="main">
+    
+    <!-- Decorative Corner Brackets & Rivets -->
+    <div class="tablet-corner top-left" aria-hidden="true"></div>
+    <div class="tablet-corner top-right" aria-hidden="true"></div>
+    <div class="tablet-corner bottom-left" aria-hidden="true"></div>
+    <div class="tablet-corner bottom-right" aria-hidden="true"></div>
+    <div class="tablet-rivet rivet-tl" aria-hidden="true"></div>
+    <div class="tablet-rivet rivet-tr" aria-hidden="true"></div>
+    <div class="tablet-rivet rivet-bl" aria-hidden="true"></div>
+    <div class="tablet-rivet rivet-br" aria-hidden="true"></div>
+
+    <!-- ==================================================================
+         TABLET HEADER
+         ================================================================== -->
+    <header class="tablet-header">
+      <div class="tablet-brand">
+        <!-- Iconic Sheikah Eye of Truth Crest -->
+        <div class="sheikah-eye-badge" aria-label="Symbole de l'Œil Sheikah">
+          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+            <circle cx="50" cy="50" r="44" stroke-width="2.5" opacity="0.35"/>
+            <!-- Outer Eye Curves -->
+            <path d="M12 50 C24 24, 76 24, 88 50 C76 76, 24 76, 12 50 Z" stroke-width="3.5"/>
+            <!-- Pupil -->
+            <circle cx="50" cy="50" r="13" fill="currentColor"/>
+            <!-- Center Ray Accent -->
+            <line x1="50" y1="14" x2="50" y2="28" stroke-width="3" stroke-linecap="round"/>
+            <!-- The Tear of the Sheikah -->
+            <path d="M50 50 L50 86" stroke-width="3" stroke-dasharray="3,2"/>
+            <polygon points="50,86 46,94 54,94" fill="currentColor"/>
+            <!-- Eyelash Accents -->
+            <line x1="28" y1="36" x2="22" y2="28" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="72" y1="36" x2="78" y2="28" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="title-group">
+          <h1>Tablette Sheikah</h1>
+          <div class="subtitle">Traducteur de Runes Anciennes // Modèle PR-01</div>
+        </div>
+      </div>
+
+      <div class="tablet-status">
+        <div class="status-chip" title="Statut du système">
+          <span class="pulse-dot"></span>
+          <span>SIGNAL SANCTUAIRE : EN LIGNE</span>
+        </div>
+        <!-- Sound Mute/Unmute Toggle -->
+        <button id="sound-toggle" class="icon-button" type="button" title="Activer / Couper le son" aria-label="Toggle Sound" aria-pressed="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ==================================================================
+         MAIN INTERACTION WORKSPACE
+         ================================================================== -->
+    <div class="tablet-body">
+      
+      <!-- ================================================================
+           LEFT PANEL: INPUT & CONFIGURATION
+           ================================================================ -->
+      <section class="slate-panel input-panel" aria-label="Zone de saisie et réglages">
+        <div class="panel-header">
+          <h2 class="panel-title">Entrée Texte</h2>
+          <div class="meta-count">
+            <span id="char-count">0</span> car. / <span id="word-count">0</span> mots
+          </div>
+        </div>
+
+        <!-- Textarea -->
+        <div class="input-wrapper">
+          <textarea 
+            id="text-input" 
+            class="sheikah-textarea" 
+            placeholder="Écrivez ici pour traduire en écriture Sheikah (A-Z, 0-9, ponctuation)..." 
+            spellcheck="false"
+            aria-label="Texte à traduire"></textarea>
+          <div class="input-actions">
+            <button id="clear-btn" class="text-btn" type="button">EFFACER</button>
+          </div>
+        </div>
+
+        <!-- Quick Sample Text Buttons -->
+        <div class="samples-section">
+          <span class="samples-label">Exemples Rapides</span>
+          <div class="samples-list">
+            <button type="button" class="sample-btn" data-sample="ZELDA">ZELDA</button>
+            <button type="button" class="sample-btn" data-sample="LINK">LINK</button>
+            <button type="button" class="sample-btn" data-sample="SHEIKAH SLATE">SHEIKAH SLATE</button>
+            <button type="button" class="sample-btn" data-sample="IT'S DANGEROUS TO GO ALONE !">IT'S DANGEROUS TO GO ALONE !</button>
+            <button type="button" class="sample-btn" data-sample="HYRULE CASTLE">HYRULE CASTLE</button>
+          </div>
+        </div>
+
+        <!-- Visual Settings Controls -->
+        <div class="panel-header" style="margin-top: 8px;">
+          <h2 class="panel-title">Paramètres des Symboles</h2>
+        </div>
+
+        <div class="controls-grid">
+          
+          <!-- Glyph Size Slider -->
+          <div class="control-item">
+            <div class="control-header">
+              <span>Taille des Runes</span>
+              <span id="glyph-size-val" class="control-val">52px</span>
+            </div>
+            <input id="glyph-size-slider" class="sheikah-slider" type="range" min="28" max="96" value="52">
+          </div>
+
+          <!-- Glyph Gap Slider -->
+          <div class="control-item">
+            <div class="control-header">
+              <span>Espacement des Lettres</span>
+              <span id="glyph-gap-val" class="control-val">8px</span>
+            </div>
+            <input id="glyph-gap-slider" class="sheikah-slider" type="range" min="2" max="24" value="8">
+          </div>
+
+          <!-- Line Gap Slider -->
+          <div class="control-item">
+            <div class="control-header">
+              <span>Espacement des Lignes</span>
+              <span id="line-gap-val" class="control-val">16px</span>
+            </div>
+            <input id="line-gap-slider" class="sheikah-slider" type="range" min="4" max="40" value="16">
+          </div>
+
+          <!-- Color Presets -->
+          <div class="control-item">
+            <div class="control-header">
+              <span>Couleur de l'Énergie</span>
+            </div>
+            <div class="color-picker-row">
+              <div class="color-presets-list" role="radiogroup" aria-label="Palette de couleur">
+                <!-- Sheikah Cyan -->
+                <button type="button" class="color-preset-btn active" data-color="#00f0ff" style="background:#00f0ff" title="Cyan Sheikah"></button>
+                <!-- Guardian Orange -->
+                <button type="button" class="color-preset-btn" data-color="#ff9900" style="background:#ff9900" title="Orange Gardien"></button>
+                <!-- Zonai Mint -->
+                <button type="button" class="color-preset-btn" data-color="#2bf7a7" style="background:#2bf7a7" title="Vert Soneau"></button>
+                <!-- Goddess Gold -->
+                <button type="button" class="color-preset-btn" data-color="#ffd700" style="background:#ffd700" title="Or de la Déesse"></button>
+                <!-- Pure White -->
+                <button type="button" class="color-preset-btn" data-color="#ffffff" style="background:#ffffff" title="Blanc Pur"></button>
+                <!-- Obsidian Black -->
+                <button type="button" class="color-preset-btn" data-color="#111111" style="background:#111111; border: 1px solid #555;" title="Noir Obsidienne"></button>
+              </div>
+              <div class="custom-picker-wrapper" title="Couleur personnalisée">
+                <input id="custom-color-picker" type="color" value="#00f0ff" aria-label="Choisir couleur personnalisée">
+              </div>
+            </div>
+          </div>
+
+          <!-- Background Presets -->
+          <div class="control-item">
+            <div class="control-header">
+              <span>Arrière-plan de Rendu</span>
+            </div>
+            <div class="color-picker-row">
+              <div class="color-presets-list" role="radiogroup" aria-label="Arrière-plan">
+                <button type="button" class="bg-preset-btn active" data-bg="#091118" style="background:#091118; border: 1px solid #1c3349" title="Ardoise Sheikah"></button>
+                <button type="button" class="bg-preset-btn" data-bg="transparent" style="background:repeating-conic-gradient(#555 0% 25%, #222 0% 50%) 50% / 10px 10px" title="Transparent"></button>
+                <button type="button" class="bg-preset-btn" data-bg="#05080c" style="background:#05080c" title="Nuit d'Hyrule"></button>
+                <button type="button" class="bg-preset-btn" data-bg="#ffffff" style="background:#ffffff" title="Blanc Lumière"></button>
+              </div>
+              <div class="custom-picker-wrapper" title="Arrière-plan personnalisé">
+                <input id="custom-bg-picker" type="color" value="#091118" aria-label="Choisir fond personnalisé">
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature Toggles -->
+          <div class="toggle-item">
+            <span>Rune pour l'espace (SPACE.svg)</span>
+            <label class="switch">
+              <input id="space-mode-toggle" type="checkbox" checked>
+              <span class="slider-switch"></span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <span>Afficher sous-titres latins</span>
+            <label class="switch">
+              <input id="hints-toggle" type="checkbox">
+              <span class="slider-switch"></span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <span>Lueur Néon Énergétique</span>
+            <label class="switch">
+              <input id="glow-toggle" type="checkbox" checked>
+              <span class="slider-switch"></span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <span>Cadre Décoratif Ancien</span>
+            <label class="switch">
+              <input id="frame-toggle" type="checkbox">
+              <span class="slider-switch"></span>
+            </label>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================================================================
+           RIGHT PANEL: LIVE SHEIKAH DISPLAY & EXPORT ACTIONS
+           ================================================================ -->
+      <section class="slate-panel preview-panel" aria-label="Rendu visuel Sheikah">
+        <div class="viewport-toolbar">
+          <h2 class="viewport-label">Écran de Traduction</h2>
+          <span class="tech-pill">TEMPS RÉEL // SVG ACTIF</span>
+        </div>
+
+        <!-- Output Viewport -->
+        <div id="output-viewport" class="viewport-casing">
+          <div class="viewport-inner">
+            <div id="sheikah-output" class="sheikah-output-container">
+              <!-- Dynamically populated by translator.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Export Buttons Section -->
+        <div class="export-actions-bar">
+          <!-- Primary SVG Export -->
+          <button id="export-svg-btn" class="primary-action-btn" type="button">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span>Télécharger SVG</span>
+          </button>
+
+          <!-- Copy SVG Code -->
+          <button id="copy-svg-btn" class="secondary-action-btn" type="button">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+            <span>Copier SVG</span>
+          </button>
+
+          <!-- Bonus PNG Export -->
+          <button id="export-png-btn" class="secondary-action-btn" type="button">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span>Télécharger PNG</span>
+          </button>
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- ==================================================================
+         BOTTOM CODEX: ALPHABET & RUNE CHEATSHEET
+         ================================================================== -->
+    <section class="codex-panel" aria-label="Codex des Runes Sheikah">
+      <div class="codex-header">
+        <h3 class="codex-title">Codex des 40 Glyphes Sheikah</h3>
+        <span class="codex-hint">Cliquez sur un symbole pour l'insérer dans le texte</span>
+      </div>
+      <div id="codex-grid" class="codex-grid">
+        <!-- Dynamically generated list of all 40 glyphs -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Interactive Feedback Toast -->
+  <aside id="sheikah-toast" class="sheikah-toast" role="status" aria-live="polite"></aside>
+
+  <!-- Application Bootstrap -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
